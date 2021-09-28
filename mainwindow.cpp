@@ -34,8 +34,10 @@ void MainWindow::on_pushButton_clicked()
         docAr = QJsonValue(doc.object().value("students")).toArray();
         for (int i = 0; i < docAr.count(); i++)
         {
-            QStandardItem* item_col_1 = new QStandardItem(docAr.at(i).toObject().value("name").toString());
+            QStandardItem* item_coll_1 = new QStandardItem(docAr.at(i).toObject().value("name").toString());
             QStandardItem* item_col_2 = new QStandardItem(QString::number(docAr.at(i).toObject().value("group").toInt()));
+
+
 
             QJsonArray docDir = QJsonValue(QJsonObject(docAr.at(i).toObject()).value("dir")).toArray();
             QString sost="";
@@ -52,7 +54,7 @@ void MainWindow::on_pushButton_clicked()
             }
 
             QStandardItem* item_col_3 = new QStandardItem(sost);
-            model->appendRow(QList<QStandardItem*>()<<item_col_1<<item_col_2<<item_col_3);
+            model->appendRow(QList<QStandardItem*>()<<item_coll_1<<item_col_2<<item_col_3);
 
         }
 
